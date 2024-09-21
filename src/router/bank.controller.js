@@ -1,5 +1,5 @@
-function getUsersData(req, res) {
+function getUserData(req, res) {
   return res.status(200).json({ message: "hello" });
 }
 
-module.exports = { getUsersData };
+module.exports = { getUserData };

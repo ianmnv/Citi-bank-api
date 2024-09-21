@@ -1,9 +1,9 @@
 const express = require("express");
 
-const { getUsersData } = require("./bank.controller");
+const { getUserData } = require("./bank.controller");
 
 const bankRouter = express.Router();
 
-bankRouter.get("/", getUsersData);
+bankRouter.get("/:id", getUserData);
 
 module.exports = bankRouter;
