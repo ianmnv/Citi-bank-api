@@ -13,6 +13,6 @@ app.use(
 app.use(morgan("common"));
 app.use(express.json());
 
-app.use("/bank", bankRouter);
+app.use("/users", bankRouter);
 
 module.exports = app;

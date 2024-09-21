@@ -1,6 +1,6 @@
 const accounts = [
   {
-    id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    id: 1001,
     username: "ianmng",
     fullName: "Ian Nava",
     email: "ianmng@gmail.com",
@@ -21,7 +21,7 @@ const accounts = [
     ],
   },
   {
-    id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    id: 1002,
     username: "john117",
     fullName: "John Smith",
     email: "john117@gmail.com",
@@ -42,7 +42,7 @@ const accounts = [
     ],
   },
   {
-    id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    id: 1003,
     username: "meganfox",
     fullName: "Megan Fox",
     email: "foxyM@gmail.com",
@@ -64,3 +64,10 @@ const accounts = [
     ],
   },
 ];
+
+function getUser(id) {
+  const user = accounts.find((acc) => acc.id === id);
+  return user;
+}
+
+module.exports = { getUser };

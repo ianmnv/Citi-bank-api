@@ -1,5 +1,8 @@
+const { getUser } = require("../models/bank.model");
+
 function getUserData(req, res) {
-  return res.status(200).json({ message: "hello" });
+  const userId = +req.params.id;
+  return res.status(200).json(getUser(userId));
 }
 
 module.exports = { getUserData };
