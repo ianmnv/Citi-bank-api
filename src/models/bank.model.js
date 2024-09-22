@@ -70,4 +70,9 @@ function getUser(id) {
   return user;
 }
 
-module.exports = { getUser, users };
+function addNewUser(newUser) {
+  newUser.id = users.at(-1).id + 1;
+  users.push(newUser);
+}
+
+module.exports = { getUser, users, addNewUser };

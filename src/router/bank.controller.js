@@ -1,4 +1,4 @@
-const { getUser, users } = require("../models/bank.model");
+const { getUser, users, addNewUser } = require("../models/bank.model");
 
 function getUserData(req, res) {
   const userId = +req.params.id;
@@ -9,4 +9,10 @@ function getAllUsers(req, res) {
   return res.status(200).json(users);
 }
 
-module.exports = { getUserData, getAllUsers };
+function postNewUser(req, res) {
+  const newUser = req.body;
+  addNewUser(newUser);
+  return res.status(201).json(newUser);
+}
+
+module.exports = { getUserData, getAllUsers, postNewUser };
