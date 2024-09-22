@@ -10,7 +10,7 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
-app.use(morgan("common"));
+app.use(morgan("combined"));
 app.use(express.json());
 
 app.use("/users", bankRouter);

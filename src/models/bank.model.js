@@ -1,4 +1,4 @@
-const accounts = [
+const users = [
   {
     id: 1001,
     username: "ianmng",
@@ -66,8 +66,8 @@ const accounts = [
 ];
 
 function getUser(id) {
-  const user = accounts.find((acc) => acc.id === id);
+  const user = users.find((acc) => acc.id === id);
   return user;
 }
 
-module.exports = { getUser };
+module.exports = { getUser, users };
