@@ -1,11 +1,15 @@
 const express = require("express");
 
-const { getUserData, getAllUsers, postNewUser } = require("./bank.controller");
+const {
+  getAllUsers,
+  postNewUser,
+  getUserByUsername,
+} = require("./bank.controller");
 
 const bankRouter = express.Router();
 
 bankRouter.get("/", getAllUsers);
-bankRouter.get("/:id", getUserData);
+bankRouter.get("/:username", getUserByUsername);
 bankRouter.post("/", postNewUser);
 
 module.exports = bankRouter;

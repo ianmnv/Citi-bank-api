@@ -65,14 +65,14 @@ const users = [
   },
 ];
 
-function getUser(id) {
-  const user = users.find((acc) => acc.id === id);
-  return user;
-}
-
 function addNewUser(newUser) {
   newUser.id = users.at(-1).id + 1;
   users.push(newUser);
 }
 
-module.exports = { getUser, users, addNewUser };
+function getUsername(username) {
+  const user = users.find((user) => user.username === username);
+  return user;
+}
+
+module.exports = { users, addNewUser, getUsername };

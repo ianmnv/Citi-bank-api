@@ -1,9 +1,4 @@
-const { getUser, users, addNewUser } = require("../models/bank.model");
-
-function getUserData(req, res) {
-  const userId = +req.params.id;
-  return res.status(200).json(getUser(userId));
-}
+const { users, addNewUser, getUsername } = require("../models/bank.model");
 
 function getAllUsers(req, res) {
   return res.status(200).json(users);
@@ -15,4 +10,9 @@ function postNewUser(req, res) {
   return res.status(201).json(newUser);
 }
 
-module.exports = { getUserData, getAllUsers, postNewUser };
+function getUserByUsername(req, res) {
+  const user = req.params.username;
+  return res.status(200).json(getUsername(user));
+}
+
+module.exports = { getAllUsers, postNewUser, getUserByUsername };
