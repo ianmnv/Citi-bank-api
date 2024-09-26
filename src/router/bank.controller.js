@@ -16,13 +16,23 @@ function postNewUser(req, res) {
 }
 
 function getUser(req, res) {
-  const user = req.params.username;
-  return res.status(200).json(getUsername(user));
+  const userFound = getUsername(req.params.username);
+
+  if (userFound) {
+    return res.status(200).json(userFound);
+  } else {
+    return res.status(404).json({ error: "User not found" });
+  }
 }
 
 function putNewUserData(req, res) {
-  console.log(req.body);
-  return res.status(200).json(modifyUsersData(req.body.id, req.body));
+  const updatedData = modifyUsersData(req.body.id, req.body);
+
+  if (updatedData) {
+    return res.status(200).json(updatedData);
+  } else {
+    return res.status(404).json({ error: "User not found" });
+  }
 }
 
 module.exports = { getAllUsers, postNewUser, getUser, putNewUserData };

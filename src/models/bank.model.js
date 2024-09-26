@@ -72,13 +72,23 @@ function addNewUser(newUser) {
 
 function getUsername(username) {
   const user = users.find((user) => user.username === username);
-  return user;
+
+  if (user) {
+    return user;
+  } else {
+    return false;
+  }
 }
 
 function modifyUsersData(id, newData) {
   const findUser = users.find((user) => user.id === +id);
-  const newUserObj = Object.assign(findUser, newData);
-  return newUserObj;
+
+  if (findUser) {
+    const newUserObj = Object.assign(findUser, newData);
+    return newUserObj;
+  } else {
+    return false;
+  }
 }
 
 module.exports = { users, addNewUser, getUsername, modifyUsersData };
