@@ -75,4 +75,10 @@ function getUsername(username) {
   return user;
 }
 
-module.exports = { users, addNewUser, getUsername };
+function modifyUsersData(id, newData) {
+  const findUser = users.find((user) => user.id === +id);
+  const newUserObj = Object.assign(findUser, newData);
+  return newUserObj;
+}
+
+module.exports = { users, addNewUser, getUsername, modifyUsersData };
