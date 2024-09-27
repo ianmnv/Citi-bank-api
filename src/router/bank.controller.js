@@ -11,11 +11,20 @@ function getAllUsers(req, res) {
 
 function postNewUser(req, res) {
   const newUser = req.body;
-  console.log(newUser);
   // Create validation in case there's empty fields in the req.body
-
-  addNewUser(newUser);
-  return res.status(201).json(newUser);
+  if (
+    newUser.username &&
+    newUser.fullName &&
+    newUser.email &&
+    newUser.password &&
+    newUser.gender &&
+    newUser.card
+  ) {
+    addNewUser(newUser);
+    return res.status(201).json(newUser);
+  } else {
+    return res.status(400).json({ error: "Must fill all inputs" });
+  }
 }
 
 function getUser(req, res) {
