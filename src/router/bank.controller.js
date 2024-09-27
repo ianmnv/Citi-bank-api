@@ -11,6 +11,9 @@ function getAllUsers(req, res) {
 
 function postNewUser(req, res) {
   const newUser = req.body;
+  console.log(newUser);
+  // Create validation in case there's empty fields in the req.body
+
   addNewUser(newUser);
   return res.status(201).json(newUser);
 }
@@ -26,6 +29,8 @@ function getUser(req, res) {
 }
 
 function putNewUserData(req, res) {
+  console.log(req);
+  // Create validation in case req.params and req.body.id are the same
   const updatedData = modifyUsersData(req.body.id, req.body);
 
   if (updatedData) {
