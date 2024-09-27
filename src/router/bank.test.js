@@ -25,7 +25,7 @@ describe("Test POST /users, new users", () => {
       .expect(201);
   });
 
-  test("Should catch missing fields", async () => {
+  test("Should return 400 bad request formissing fields", async () => {
     await supertest(app)
       .post("/users")
       .send({
@@ -41,6 +41,39 @@ describe("Test POST /users, new users", () => {
   });
 });
 
-describe("Test GET /users/:username, specific user", () => {});
+describe("Test GET /users/:username, specific user", () => {
+  test("Should return 200 status code", async () => {
+    const response = await supertest(app).get("/users/ianmng");
+
+    expect(response.body).toMatchObject({
+      id: 1001,
+      username: "ianmng",
+      fullName: "Ian Nava",
+      email: "ianmng@gmail.com",
+      password: "mybankpass",
+      gender: "male",
+      card: "student",
+      creditCard: "",
+      movements: [920.55, 9000, 20000, -5000, -100, 10000, -450, -3400],
+      descriptionMove: [
+        "Product sold",
+        "Paycheck",
+        "Product sold",
+        "Liverpool",
+        "KFC",
+        "Product sold",
+        "P.F. Changs",
+        "Bar Margaritas",
+      ],
+    });
+  });
+
+  test("Should return 404 status code", async () => {
+    await supertest(app)
+      .get("/users/fatKiller")
+      .expect("Content-type", /json/)
+      .expect(404);
+  });
+});
 
 describe("Test PUT /users/:id, modify user's data", () => {});
